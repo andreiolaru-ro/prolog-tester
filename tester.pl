@@ -239,9 +239,9 @@ tt('2b', [
 % one.
 tests(Tests) :- (   current(_), ! ; retractall(punct(_, _))),
         (   current(Ex), !, exercitiul(Ex, [Pts | _]), Total is Pts
-        ;   Total is 100
+        ;   Total is 100, Ex is none
         ),
-        tests(Tests, Total, none, Score),
+        tests(Tests, Total, Ex, Score),
         (   current(Ex), assert(punct(Ex, Score)), !
         ;   format('Rezolvat ~0f%.~n', [Score])
         ), !.
